@@ -5,14 +5,8 @@ var type: String = ""
 
 signal element_change
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("element_change", get_parent().get_parent().get_parent().get_parent(), "test")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	connect("element_change", get_node("/root/Spatial"), "matrix_element_change")
 
 func _on_Element_mouse_entered():
 	if editable:
@@ -34,6 +28,6 @@ func _on_HSlider_mouse_exited():
 		$HSlider.set_visible(false)
 
 func _on_HSlider_value_changed(value):
-	emit_signal("element_change", type)
+	emit_signal("element_change", type, value)
 	if editable:
 		$".".text = String(value)

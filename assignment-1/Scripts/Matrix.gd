@@ -1,9 +1,5 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var translation_matrix = [
 	[1, 0, 0, 0],
 	[0, 1, 0, 0],
@@ -11,7 +7,6 @@ var translation_matrix = [
 	["x", "y", "z", 1],
 ]
 
-# Called when the node enters the scene tree for the first time.
 func _ready():	
 	
 	var element_count = 0
