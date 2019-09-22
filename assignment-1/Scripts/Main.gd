@@ -5,19 +5,26 @@ func _ready():
 	pass # Replace with function body.
 	
 func _process(delta):
-	$Piece.rotate_x(1 * delta)
-	$Piece.rotate_y(1 * delta)
-	$Piece.rotate_z(1 * delta)
+	pass
 
-func matrix_element_change(type, value):
-	if type in ["x", "y", "z"]:
+func matrix_element_change(type, element, value, change):
+	if type == "translation":
 		var translation = $Piece.get_translation()
-		
-		if type == "x":
+		if element == "x":
 			translation.x = value
-		elif type == "y":
+		elif element == "y":
 			translation.y = value
-		elif type == "z":
+		elif element == "z":
 			translation.z = value
-		
+			
 		$Piece.set_translation(translation)
+
+	elif type == "rotate x":
+		$Piece.rotate_x(deg2rad(change))
+		
+	elif type == "rotate y":
+		print(type)
+		$Piece.rotate_y(deg2rad(change))
+	
+	elif type == "rotate z":
+		$Piece.rotate_z(deg2rad(change))

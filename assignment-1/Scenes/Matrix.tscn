@@ -9,10 +9,11 @@ size = 200
 font_data = ExtResource( 2 )
 
 [node name="Matrix" type="Control"]
-anchor_right = 0.349
-anchor_bottom = 0.325
-margin_right = 54.624
-margin_bottom = 38.0
+anchor_right = 0.5
+anchor_bottom = 0.388
+margin_right = 2.0
+margin_bottom = 0.199997
+rect_min_size = Vector2( 514, 233 )
 mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
@@ -53,88 +54,92 @@ __meta__ = {
 
 [node name="Element" parent="GridContainer" instance=ExtResource( 1 )]
 margin_top = -1.0
+margin_right = 100.0
 margin_bottom = 41.95
 
 [node name="Element2" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 81.0
+margin_left = 104.0
 margin_top = -1.0
-margin_right = 158.31
+margin_right = 204.0
 margin_bottom = 41.95
 
 [node name="Element3" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 162.0
+margin_left = 208.0
 margin_top = -1.0
-margin_right = 239.31
+margin_right = 308.0
 margin_bottom = 41.95
 
 [node name="Element4" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 243.0
+margin_left = 312.0
 margin_top = -1.0
-margin_right = 320.31
+margin_right = 412.0
 margin_bottom = 41.95
 
 [node name="Element5" parent="GridContainer" instance=ExtResource( 1 )]
 margin_top = 45.0
+margin_right = 100.0
 margin_bottom = 87.95
 
 [node name="Element6" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 81.0
+margin_left = 104.0
 margin_top = 45.0
-margin_right = 158.31
+margin_right = 204.0
 margin_bottom = 87.95
 
 [node name="Element7" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 162.0
+margin_left = 208.0
 margin_top = 45.0
-margin_right = 239.31
+margin_right = 308.0
 margin_bottom = 87.95
 
 [node name="Element8" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 243.0
+margin_left = 312.0
 margin_top = 45.0
-margin_right = 320.31
+margin_right = 412.0
 margin_bottom = 87.95
 
 [node name="Element9" parent="GridContainer" instance=ExtResource( 1 )]
 margin_top = 91.0
+margin_right = 100.0
 margin_bottom = 133.95
 
 [node name="Element10" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 81.0
+margin_left = 104.0
 margin_top = 91.0
-margin_right = 158.31
+margin_right = 204.0
 margin_bottom = 133.95
 
 [node name="Element11" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 162.0
+margin_left = 208.0
 margin_top = 91.0
-margin_right = 239.31
+margin_right = 308.0
 margin_bottom = 133.95
 
 [node name="Element12" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 243.0
+margin_left = 312.0
 margin_top = 91.0
-margin_right = 320.31
+margin_right = 412.0
 margin_bottom = 133.95
 
 [node name="Element13" parent="GridContainer" instance=ExtResource( 1 )]
 margin_top = 137.0
+margin_right = 100.0
 margin_bottom = 179.95
 
 [node name="Element14" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 81.0
+margin_left = 104.0
 margin_top = 137.0
-margin_right = 158.31
+margin_right = 204.0
 margin_bottom = 179.95
 
 [node name="Element15" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 162.0
+margin_left = 208.0
 margin_top = 137.0
-margin_right = 239.31
+margin_right = 308.0
 margin_bottom = 179.95
 
 [node name="Element16" parent="GridContainer" instance=ExtResource( 1 )]
-margin_left = 243.0
+margin_left = 312.0
 margin_top = 137.0
-margin_right = 320.31
+margin_right = 412.0
 margin_bottom = 179.95

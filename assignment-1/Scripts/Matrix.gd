@@ -1,6 +1,7 @@
 extends Control
 
 export(String, "translation", "rotate x", "rotate y", "rotate z") var matrix_type
+var theta = []
 
 var translation_matrix = [
 	[1, 0, 0, 0],
@@ -52,6 +53,10 @@ func _ready():
 			if typeof(element) == TYPE_STRING:
 				matrix_element.editable = true
 				matrix_element.add_color_override("font_color", Color(0,1,0))
-				matrix_element.type = element
+				matrix_element.type = matrix_type
+				matrix_element.element = element
+				if !(element in ["x", "y", "z"]):
+					matrix_element.text = element + " 0"
+					theta.append(matrix_element)
 			elif element != 0:
 				matrix_element.text = String(element)

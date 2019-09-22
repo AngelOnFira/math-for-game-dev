@@ -23,15 +23,47 @@ transform = Transform( -0.253589, 0.335278, -0.907348, 0, 0.93801, 0.346608, 0.9
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TranslationMatrix" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -206.0
+margin_left = -257.0
 margin_top = -233.0
-margin_right = 206.0
+margin_right = 257.0
+margin_bottom = 0.0
+matrix_type = "translation"
+
+[node name="RotationXMatrix" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -233.0
+margin_right = 257.0
 margin_bottom = 0.0
 matrix_type = "rotate x"
+
+[node name="RotationYMatrix2" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -233.0
+margin_right = 257.0
+margin_bottom = 0.0
+matrix_type = "rotate y"
+
+[node name="RotationZMatrix3" parent="CanvasLayer" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -257.0
+margin_top = -233.0
+margin_right = 257.0
+margin_bottom = 0.0
+matrix_type = "rotate z"
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 visible = false
