@@ -22,9 +22,9 @@ __meta__ = {
 
 [node name="HSlider" type="HSlider" parent="."]
 visible = false
-margin_left = -38.648
+margin_left = -26.678
 margin_top = 30.91
-margin_right = 115.442
+margin_right = 127.412
 margin_bottom = 46.91
 min_value = -4.0
 max_value = 4.0
