@@ -1,6 +1,7 @@
 extends Spatial
 
-onready var cube = preload("res://Scenes/Cube.tscn")
+var cube = preload("res://Scenes/Cube.tscn")
+var material
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -42,10 +43,10 @@ var colours = [
 	ORANGE
 ]
 
-func _ready():
-	randomize()
-	var new_material = SpatialMaterial.new()
-	new_material.albedo_color = colours[randi() % colours.size()]
+func _init():
+	material = SpatialMaterial.new()
+	#print(colours[randi() % colours.size()])
+	material.albedo_color = colours[randi() % colours.size()]
 	
 	for y in range(3):
 		for x in range(3):
@@ -53,7 +54,7 @@ func _ready():
 				if t_shape[y][x][z] != 0:
 					var new_cube: MeshInstance = cube.instance().get_child(0)
 					new_cube.translate(Vector3(x, y, z))
-					new_cube.mesh.surface_set_material(0, new_material)
+					new_cube.mesh.surface_set_material(0, material)
 					add_child(new_cube.get_parent())
 					
 					if t_shape[y][x][z] == 2:
@@ -62,6 +63,9 @@ func _ready():
 	# Offset all cubes based on origin of piece
 	for child in $".".get_children():
 		child.translate(origin * -1)
+
+func _ready():
+	pass
 						
 func _process(delta):
 	pass

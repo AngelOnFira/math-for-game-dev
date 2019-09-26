@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Matrix.tscn" type="PackedScene" id=2]
@@ -7,6 +7,10 @@
 
 [sub_resource type="CubeMesh" id=2]
 material = SubResource( 1 )
+
+[sub_resource type="Environment" id=3]
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.25
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
@@ -68,6 +72,7 @@ margin_bottom = -4.0
 matrix_type = "rotate z"
 
 [node name="Accept" type="Button" parent="CanvasLayer"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -100.0
@@ -82,4 +87,7 @@ __meta__ = {
 visible = false
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
 [connection signal="pressed" from="CanvasLayer/Accept" to="." method="_on_Accept_pressed"]

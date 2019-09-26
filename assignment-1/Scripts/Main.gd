@@ -2,21 +2,13 @@ extends Spatial
 
 onready var piece = preload("res://Scenes/Piece.tscn")
 var change_occured = false
+var ready_to_reset = false
 
-# Called when the node enters the scene tree for the first time.
+func _init():
+	randomize()
+
 func _ready():
-	var move_piece = piece.instance()
-	move_piece.name = "MovePiece"
-	var goal_piece = piece.instance()
-	goal_piece.name = "GoalPiece"
-	
-	add_child(move_piece)
-	add_child(goal_piece)
-	
-	var translation = goal_piece.get_translation()
-	translation.z = -3
-	goal_piece.rotate_y(deg2rad(90))
-	goal_piece.set_translation(translation)
+	_spawn_pieces()
 	
 func _process(delta):
 	change_occured = false
@@ -47,23 +39,15 @@ func matrix_element_change(type, element, value, change):
 	elif type == "rotate z":
 		$MovePiece.rotate_z(deg2rad(change))
 
-#	var parent_transform = $MovePiece.get_global_transform()
-#	print(parent_transform.basis)
-#	print(parent_transform.origin)
-
 	var move_piece_transform = $MovePiece.get_global_transform()
 	var goal_piece_transform = $GoalPiece.get_global_transform()
-	
-#	move_piece_transform = _clean_transform(move_piece_transform)
-#	goal_piece_transform = _clean_transform(goal_piece_transform)
-	
-#	print(move_piece_transform.basis.get_euler())
-#	print("=")
-#	print(goal_piece_transform.basis.get_euler())
-#	print(" ")
 
-	if (move_piece_transform.basis.get_euler() == goal_piece_transform.basis.get_euler()):
-		print("same")
+	if (move_piece_transform.basis.get_euler() == goal_piece_transform.basis.get_euler() and
+		move_piece_transform.origin == goal_piece_transform.origin):
+		ready_to_reset = true
+		print("ready")
+	else:
+		ready_to_reset = false
 
 
 func _on_Accept_pressed():
@@ -79,21 +63,39 @@ func _on_Accept_pressed():
 
 		child.get_parent().remove_child(child)
 		$Pieces.add_child(child)
+
+func _spawn_pieces():
+	var move_piece = piece.instance()
+	move_piece.name = "MovePiece"
+	var goal_piece = piece.instance()
+	goal_piece.name = "GoalPiece"
+	print(move_piece.material)
+	print(goal_piece.material)
+	
+	#goal_piece.get_child(0).material.flags_transparent = true
+	#goal_piece.get_child(0).material.albedo_color.a = 0.5
+	
+	add_child(move_piece)
+	add_child(goal_piece)
+	
+	var translation = goal_piece.get_translation()
+	translation.z = randi() % 6 - 3
+	translation.x = randi() % 6 - 3
+	goal_piece.rotate_x(deg2rad(randi() % 6 - 3) * 90)
+	goal_piece.rotate_y(deg2rad(randi() % 6 - 3) * 90)
+	goal_piece.rotate_z(deg2rad(randi() % 6 - 3) * 90)
+	goal_piece.set_translation(translation)
+
+func _reset_level():
+	if ready_to_reset:
+		for child in $CanvasLayer/TabContainer.get_children():
+			for element in child.get_node("GridContainer").get_children():
+				element.get_node("HSlider").value = 0
+
+		$MovePiece.queue_free()
+		$GoalPiece.queue_free()
+		$GoalPiece.name = "DeadGoalPiece"
+		$MovePiece.name = "DeadMovePiece"
 		
-func _clean_transform(transform_in):
-	transform_in.basis.x = Vector3(
-		int(transform_in.basis.x.x),
-		int(transform_in.basis.x.y),
-		int(transform_in.basis.x.z))
-		
-	transform_in.basis.y = Vector3(
-		int(transform_in.basis.y.x),
-		int(transform_in.basis.y.y),
-		int(transform_in.basis.y.z))
-		
-	transform_in.basis.z = Vector3(
-		int(transform_in.basis.z.x),
-		int(transform_in.basis.z.y),
-		int(transform_in.basis.z.z))
-		
-	return transform_in
+		_spawn_pieces()
+		ready_to_reset = false
