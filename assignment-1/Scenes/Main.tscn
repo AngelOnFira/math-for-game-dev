@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Piece.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Matrix.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Matrix.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -11,10 +10,6 @@ material = SubResource( 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
-
-[node name="Piece" parent="." instance=ExtResource( 2 )]
-
-[node name="Pieces" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.724533, 0.238896, -0.646514, 0, 0.93801, 0.346608, 0.68924, -0.251129, 0.679619, -10, 2.746, 4 )
@@ -33,7 +28,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Translation" parent="CanvasLayer/TabContainer" instance=ExtResource( 3 )]
+[node name="Translation" parent="CanvasLayer/TabContainer" instance=ExtResource( 2 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -42,7 +37,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 matrix_type = "translation"
 
-[node name="X Rotation" parent="CanvasLayer/TabContainer" instance=ExtResource( 3 )]
+[node name="X Rotation" parent="CanvasLayer/TabContainer" instance=ExtResource( 2 )]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,7 +47,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 matrix_type = "rotate x"
 
-[node name="Y Rotation" parent="CanvasLayer/TabContainer" instance=ExtResource( 3 )]
+[node name="Y Rotation" parent="CanvasLayer/TabContainer" instance=ExtResource( 2 )]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,7 +57,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 matrix_type = "rotate y"
 
-[node name="Z Rotation" parent="CanvasLayer/TabContainer" instance=ExtResource( 3 )]
+[node name="Z Rotation" parent="CanvasLayer/TabContainer" instance=ExtResource( 2 )]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0

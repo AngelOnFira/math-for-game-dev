@@ -36,6 +36,7 @@ func _on_HSlider_value_changed(value):
 	
 		if !(element in ["x", "y", "z"]):
 			for sibiling in get_parent().get_parent().theta:
-				sibiling.text = element + " " + String(value * 90)
+				sibiling.text = sibiling.element + " " + String(value * 90)
+				sibiling.get_children()[0].value = value
 		else:
 			$".".text = String(value)
