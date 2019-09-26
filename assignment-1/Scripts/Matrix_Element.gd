@@ -30,12 +30,11 @@ func _on_HSlider_mouse_exited():
 		$HSlider.set_visible(false)
 
 func _on_HSlider_value_changed(value):
-	emit_signal("element_change", type, element, value, (value - last_val) * 90)
-	print(value - last_val)
-	last_val = value
-	
 	if editable:
-		if !(type in ["x", "y", "z"]):
+		emit_signal("element_change", type, element, value, (value - last_val) * 90)
+		last_val = value
+	
+		if !(element in ["x", "y", "z"]):
 			for sibiling in get_parent().get_parent().theta:
 				sibiling.text = element + " " + String(value * 90)
 		else:

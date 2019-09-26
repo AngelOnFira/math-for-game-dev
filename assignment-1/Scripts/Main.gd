@@ -28,3 +28,22 @@ func matrix_element_change(type, element, value, change):
 	
 	elif type == "rotate z":
 		$Piece.rotate_z(deg2rad(change))
+
+	var parent_transform = $Piece.get_global_transform()
+	print(parent_transform.basis)
+	print(parent_transform.origin)
+
+
+func _on_Accept_pressed():
+	var parent_transform = $Piece.get_global_transform()
+	print(parent_transform.basis)
+	print(parent_transform.origin)
+	for child in $Piece.get_children():
+		var child_transform = child.get_global_transform()
+		var new_child_transform = Transform(
+			parent_transform.basis.x
+		)
+		child.set_global_transform(new_child_transform)
+
+		child.get_parent().remove_child(child)
+		$Pieces.add_child(child)
